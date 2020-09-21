@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArmesController.cs" />
+    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SamouraisController.cs" />
     <Compile Include="Data\DojoContext.cs" />
@@ -138,6 +139,8 @@
       <DependentUpon>202009211434223_migration_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ArmeViewModel.cs" />
+    <Compile Include="Models\SamouraiViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,10 +189,10 @@
     <Content Include="Views\Armes\Details.cshtml" />
     <Content Include="Views\Armes\Edit.cshtml" />
     <Content Include="Views\Armes\Index.cshtml" />
+    <Content Include="Views\Shared\_SamouraiDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -205,15 +208,15 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009211434223_migration_1.resx">
+      <DependentUpon>202009211434223_migration_1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
       <Project>{0bba0441-0ab7-4112-946b-521c9cec7367}</Project>
       <Name>BO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009211434223_migration_1.resx">
-      <DependentUpon>202009211434223_migration_1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
