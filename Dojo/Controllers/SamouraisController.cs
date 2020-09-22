@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using Dojo.Data;
+using Dojo.Models;
 
 namespace Dojo.Controllers
 {
@@ -24,6 +25,9 @@ namespace Dojo.Controllers
         // GET: Samourais/Details/5
         public ActionResult Details(int? id)
         {
+            SamouraiViewModel svm = new SamouraiViewModel();
+            svm.Samourai = db.Samourais.FirstOrDefault(x => x.Id == id);
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -33,13 +37,15 @@ namespace Dojo.Controllers
             {
                 return HttpNotFound();
             }
-            return View(samourai);
+            return View(svm);
         }
 
         // GET: Samourais/Create
         public ActionResult Create()
         {
-            return View();
+            SamouraiViewModel svm = new SamouraiViewModel();
+            svm.Armes = db.Armes.Select(x => new SelectListItem() { Text = x.Nom, Value = x.Id.ToString() }).ToList();
+            return View(svm);
         }
 
         // POST: Samourais/Create
@@ -47,16 +53,18 @@ namespace Dojo.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Force,Nom")] Samourai samourai)
+        public ActionResult Create(SamouraiViewModel svm)
         {
             if (ModelState.IsValid)
             {
+                Samourai samourai = svm.Samourai;
+                samourai.Arme = db.Armes.Find(svm.IdArme);
                 db.Samourais.Add(samourai);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(samourai);
+            //svm.Armes = db.Armes.Select(x => new SelectListItem() { Text = x.Nom, Value = x.Id.ToString() }).ToList();
+            return View(svm);
         }
 
         // GET: Samourais/Edit/5

@@ -127,13 +127,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArmesController.cs" />
-    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SamouraisController.cs" />
     <Compile Include="Data\DojoContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MyHelpers.cs" />
     <Compile Include="Migrations\202009211434223_migration_1.cs" />
     <Compile Include="Migrations\202009211434223_migration_1.Designer.cs">
       <DependentUpon>202009211434223_migration_1.cs</DependentUpon>
@@ -190,6 +190,7 @@
     <Content Include="Views\Armes\Edit.cshtml" />
     <Content Include="Views\Armes\Index.cshtml" />
     <Content Include="Views\Shared\_SamouraiDisplay.cshtml" />
+    <Content Include="Views\Shared\_SamouraiDisplayWithId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,9 @@
+﻿@model Dojo.Models.SamouraiViewModel
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(model => model.Samourai.Id)
+
+@Html.Partial("_SamouraiDisplay")
+
+@Html.DisplayFor(Model => Model.Samourai.Arme.Nom)
+
